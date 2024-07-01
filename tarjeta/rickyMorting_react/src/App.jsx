@@ -1,49 +1,28 @@
-//import { useState } from 'react'
-//import reactLogo from './assets/react.svg'
+import {useState, useEffect} from 'react'
+import Artista   from './assets/s1.jpg'
+import Artista2   from './assets/s2.jpg'
+import Artista4   from './assets/s4.jpg'
+import Card from './component/card'
+import './App.css'
 
-//import './App.css'
-import React from 'react';
-import Titulo from './component/Titulo';
-import Image from './component/Imagen';
-import Details from './component/Descripcion';
-import Artista   from './assets/shaki.jpg'
-
-
-//function App() {
- // const [count, setCount] = useState(0)
-
- // return (
-   // <>
-   //   <div>
-   //   <h1>MI PRIMERA TARJETA DE REACT</h1>
-   //     <img src={todaFamilia} classname="family"/>
-   //   <p>
-       
-   //   </p>
-        
-    //  </div>
-    
-   // </>
-  //)
-//}
 
 function App() {
-  // Recuerda que este es solo un componente funcional, 
-  // tu debes incluir estilos para hacerlo más atractivo
+ const[saldo, setSaldo]=useState(1000)
+useEffect(()=>{
+  console.log('se actualizo el saldo')
+}, [saldo])
+
+
   return (
-    <div>
-      {/* Titulo de el artista/personaje */}
-      <Titulo title={'SHAKIRA'} />
-      {/* Imagen de el artista/personaje */}
-      <Image
-        url={Artista} 
-      />
-      {/* Detalles de el artista/personaje */}
-      <Details
-        genre={'POP'} 
-        status={'ARTISTA DEL MOMENTO'} 
-      />
-    </div>
+    <>
+   
+      <Card Titulo ="primera imagen" imagen={Artista}/>
+      <Card/>
+      <Card Titulo ="tercera imagen" imagen={Artista2}/>
+      <Card Titulo ="cuarta imagen" imagen={Artista4}/>
+      <p>TU SALDO ES :{saldo}</p>
+      <button onClick={() => setSaldo(saldo +100)}>Agregar Saldo</button>
+    </>
   );
 }
 
